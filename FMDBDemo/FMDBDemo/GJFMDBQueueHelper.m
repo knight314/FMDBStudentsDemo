@@ -142,7 +142,7 @@ static GJFMDBQueueHelper *sharedHelper = nil;
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         
         [db open];
-        NSString *sqlString=[NSString stringWithFormat:@"INSERT INTO t_student (student_name,student_age) VALUES ('%@',%ld)",
+        NSString *sqlString=[NSString stringWithFormat:@"INSERT INTO t_students (student_name,student_age) VALUES ('%@',%ld)",
                              student.studentName,
                              [student.studentAge integerValue]];
         insertResult=[db executeUpdate:sqlString];
@@ -160,7 +160,7 @@ static GJFMDBQueueHelper *sharedHelper = nil;
     __block BOOL result=NO;
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         [db open];
-        NSString *sqlString=[NSString stringWithFormat:@"DELETE FROM t_student WHERE student_id = %ld",[studentID integerValue]];
+        NSString *sqlString=[NSString stringWithFormat:@"DELETE FROM t_students WHERE student_id = %ld",[studentID integerValue]];
         result=[db executeUpdate:sqlString];
         [db close];
     }];
